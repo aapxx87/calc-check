@@ -1,0 +1,241 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(71, 68, 68);
+  font-family: 'Urbanist', sans-serif;
+
+}
+
+
+/* ------------ ДВА ОСНОВНЫХ КОНТЕЙНЕРА */
+
+.container {
+  text-align: center;
+  width: 350px;
+  background-color: #4E5255;
+  border-radius: 20px;
+  box-shadow: 5px 5px 20px 12px rgba(0,0,0,0.22);
+  padding: 0 40px;
+}
+
+.shift-out-container {
+  /* transform: translateX(-100%); */
+  display: none;
+}
+
+
+.container-list {
+  display: none;
+  text-align: center;
+  width: 350px;
+  height: 620px;
+  background-color: #4E5255;
+  border-radius: 20px;
+  box-shadow: 5px 5px 20px 12px rgba(0,0,0,0.22);
+  padding: 0 40px;
+  transform: translateX(100%);
+}
+
+
+.shift-in-container-list {
+  display: block;
+  transform: translateX(0);
+}
+
+
+
+/* ------------ ЗАГОЛОВКИ СЕКЦИЙ */
+.container-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 20px;
+  font-size: 13px;
+  color: #A2A7AB;
+}
+
+
+.container-title p {
+  border-bottom: 1px solid #A2A7AB;
+  width: 45%;
+  letter-spacing: 2px;
+}
+
+.active-style {
+  color: #bfc3c7;
+  font-weight: 700;
+
+}
+
+
+.passive-style {
+  color: #A2A7AB;
+  opacity: .3;
+}
+
+
+
+
+
+
+
+
+
+.result {
+  width: 50%;
+  margin: 0 auto;
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+.result--details {
+  display: flex;
+  justify-content: space-between;
+}
+
+
+/* экран вывода результатов калькулятора */
+.display-final {
+  width: 100%;
+  height: 30px;
+  margin: 20px auto;
+  color: #fff;
+  text-align: right;
+  font-size: 40px;
+  margin-bottom: 40px;
+}
+
+.display-list {
+  margin: 0 auto;
+  width: 100%;
+  height: 100px;
+  text-align: right;
+  color: #A2A7AB;
+  /* border: 1px solid #fff; */
+}
+
+.display-list p {
+ margin-bottom: 5px;
+}
+
+
+.display {
+  width: 100%;
+  height: 30px;
+  margin: 20px auto;
+  color: #fff;
+  /* border: 1px solid #fff; */
+  text-align: right;
+}
+
+
+/* Calc buttons container (grid) */
+.calc-tabs {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  color: #fff;
+}
+
+.tab {
+  /* border: 1px solid rgb(136, 127, 127); */
+  padding: 17px 10px;
+  transition: .3s;
+  /* border-radius: 50%; */
+}
+
+
+.tab:hover {
+  background-color: rgb(138, 118, 118);
+  color: rgb(244, 248, 135);
+}
+
+
+/* .tab-bg {
+  background-color: #91EFF6;
+  border-radius: 50%;
+} */
+
+
+.tab-del {
+  color: rgb(228, 139, 139);
+}
+
+
+.tab-calc, .tab-equal {
+  color: rgb(156, 228, 156)
+}
+
+.tab-save {
+  grid-row: 4/5;
+  grid-column: 4/6;
+  text-align: right;
+
+}
+
+
+
+
+
+
+
+
+/* Input */
+
+.inputBox {
+  margin: 20px auto;
+  text-align: right;
+}
+
+input {
+  padding: 5px 5px;
+  /* display: block; */
+}
+
+
+.input_title {
+  width: 100px;
+  color: #fff;
+  background-color: #4E5255;
+  border: none;
+  border-bottom: 1px solid #fff;
+
+}
+
+
+label {
+  color: #fff;
+}
+
+
+/* Buttons */
+
+.btn {
+  padding: 10px 20px;
+  margin: 20px auto;
+  border-radius: 10px;
+}
+
+.btn_add, .btn_done {
+  display: block;
+}
+
+.btn_save {
+  width: 80px;
+  padding: 5px 10px;
+  margin: 0;
+  background-color: rgba(78,82,85, 0);
+  border: none;
+  color: rgb(213, 253, 101);
+  border: 1px solid rgb(213, 253, 101);
+  border-radius: 20px;
+}
+
