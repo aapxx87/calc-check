@@ -24,10 +24,10 @@ body {
   background-color: #4E5255;
   border-radius: 20px;
   padding: 30px 20px;
+  transition: .7s;
 }
 
 .shift-out-container {
-  /* transform: translateX(-100%); */
   display: none;
 }
 
@@ -40,13 +40,12 @@ body {
   background-color: #4E5255;
   border-radius: 20px;
   padding: 30px 20px;
-  transform: translateX(100%);
+
 }
 
 
 .shift-in-container-list {
   display: block;
-  transform: translateX(0);
 }
 
 
