@@ -9,7 +9,7 @@ body {
   height: 100vh;
   align-items: center;
   justify-content: center;
-  background-color: rgb(71, 68, 68);
+  background-color: #4E5255;
   font-family: 'Urbanist', sans-serif;
 
 }
@@ -22,7 +22,7 @@ body {
   width: 350px;
   background-color: #4E5255;
   border-radius: 20px;
-  box-shadow: 5px 5px 20px 12px rgba(0,0,0,0.22);
+  /* box-shadow: 5px 5px 20px 12px rgba(0,0,0,0.22); */
   padding: 0 40px;
 }
 
