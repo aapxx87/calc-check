@@ -58,7 +58,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: 20px;
+  /* margin-top: 10px; */
   font-size: 13px;
   color: #A2A7AB;
 }
