@@ -152,7 +152,7 @@ body {
 .tab {
   padding: 17px 10px;
   /* transition: .1s; */
-  font-size: 25px;
+  font-size: 27px;
 }
 
 
@@ -232,13 +232,13 @@ label {
 }
 
 .btn_save {
-  width: 80px;
+  /* width: 80px;
   padding: 5px 10px;
   margin: 0;
   background-color: rgba(78,82,85, 0);
-  border: none;
+  border: none; */
   color: rgb(213, 253, 101);
-  border: 1px solid rgb(213, 253, 101);
-  border-radius: 20px;
+  /* border: 1px solid rgb(213, 253, 101);
+  border-radius: 20px; */
 }
 
