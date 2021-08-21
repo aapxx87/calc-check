@@ -25,6 +25,8 @@ body {
   border-radius: 20px;
   padding: 30px 20px;
   transition: .7s;
+
+  /* display: none; */
 }
 
 .shift-out-container {
@@ -82,24 +84,6 @@ body {
 
 
 
-
-
-
-
-
-.result {
-  width: 50%;
-  margin: 0 auto;
-  color: #fff;
-  margin-bottom: 20px;
-}
-
-.result--details {
-  display: flex;
-  justify-content: space-between;
-}
-
-
 /* экран вывода результатов калькулятора */
 .display-final {
   width: 100%;
@@ -133,7 +117,7 @@ body {
   color: #fff;
   /* border: 1px solid #fff; */
   text-align: right;
-  font-size: 20px;
+  font-size: 22px;
 }
 
 
@@ -153,10 +137,10 @@ body {
 }
 
 
-.tab:active {
+/* .tab:active {
   background-color: rgb(138, 118, 118);
   color: rgb(244, 248, 135);
-}
+} */
 
 
 /* .tab-bg {
@@ -182,6 +166,45 @@ body {
 }
 
 
+/* ----- экран результата */
+
+.result {
+  width: 100%;
+  margin: 0 auto;
+  color: #fff;
+  margin-top: 50px;
+  margin-bottom: 20px;
+}
+
+.result-title {
+  text-align: left;
+  margin-bottom: 15px;
+}
+
+
+.result-sum {
+  text-align: left;
+  font-size: 48px;
+  margin-bottom: 20px;
+}
+
+.result--details {
+  display: flex;
+  justify-content: space-between;
+}
+
+.result-ul {
+  width: 60%;
+}
+
+.result-ul li {
+  display: flex;
+  list-style: none;
+  margin-bottom: 20px;
+  justify-content: space-between;
+  border-bottom: 1px solid rgb(138, 118, 118);
+  padding-bottom: 10px;
+}
 
 
 

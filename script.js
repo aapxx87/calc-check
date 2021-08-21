@@ -245,10 +245,10 @@ btnSave.addEventListener('click', function () {
   numbersData = []
 
   // inputAdd.value = ''
-  inputTitle.value = ''
+  // inputTitle.value = ''
 
 
-  console.log('--------- Updated array ---------');
+  // console.log('--------- Updated array ---------');
   console.log(dataArray);
 
 
@@ -260,17 +260,36 @@ btnSave.addEventListener('click', function () {
     `
       <div class="result ${lastItem.itemName}">
        <p class="result-title"><b>${lastItem.itemName}</b></p>
+       <p class="result-sum"></p>
       </div >
     `
   )
 
+
+  let sum = 0
+
   // потом из каждого элемента списка довставляем его array
   for (const list of lastItem.numberData) {
+
+    sum = sum + list[0]
+
+    console.log(sum)
+
     document.querySelector(`.${lastItem.itemName}`).insertAdjacentHTML("beforeEnd",
       `
-       <p class="result-list">${list}</p>
+
+      <ul class="result-ul">
+        <li>
+          <p class="result-list">${list[0]}</p>
+          <p class="result-name">${list[1]}</p>
+        </li>
+        </ul>
      `)
   }
+
+
+  document.querySelector('.result-sum').insertAdjacentHTML("beforeEnd",
+    `<p class="result-sum">${sum}</p>`)
 
 
   caclContainer.classList.add('shift-out-container')
