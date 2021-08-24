@@ -17,6 +17,7 @@ body {
 
 /* ------------ ДВА ОСНОВНЫХ КОНТЕЙНЕРА */
 
+/* КОНТЕЙНЕР СКАЛЬКУЛЯТОРОМ */
 .container {
   text-align: center;
   height: 100vh;
@@ -33,7 +34,7 @@ body {
   display: none;
 }
 
-
+/* КОНТЕЙНЕР СОХРАНЕНИЯ СОБЫТИЯ */
 .container-list {
   display: none;
   text-align: center;
@@ -42,13 +43,25 @@ body {
   background-color: #4E5255;
   border-radius: 20px;
   padding: 30px 20px;
-
 }
 
 
 .shift-in-container-list {
   display: block;
 }
+
+/* КОНТЕЙНЕР СПИСКА ВСЕХ СОБЫТИЙ */
+.container-allList {
+  display: none;
+  text-align: left;
+  height: 100vh;
+  width: 100%;
+  background-color: #4E5255;
+  border-radius: 20px;
+  padding: 30px 20px;
+}
+
+
 
 
 
@@ -211,8 +224,9 @@ body {
 
 
 
-/* Input */
+/* ------- Input */
 
+/* контейнер в котором лежит инпут для ввода названия события */
 .inputBox {
   margin: 20px auto;
   text-align: right;
@@ -224,33 +238,25 @@ input {
 }
 
 
+/* Инпут ввода названия события в калькуляторе */
 .input_title {
   width: 100px;
   color: #fff;
-  background-color: #4E5255;
-  border: none;
-  /* border-bottom: 1px solid #fff; */
+  background-color: transparent;
+  border: 0;
+  border-bottom: 1px #fff solid;
   font-size: 16px;
 }
 
-
-label {
-  color: #fff;
+.input_title:focus {
+  outline: 0;
 }
 
 
-/* Buttons */
 
-.btn {
-  padding: 10px 20px;
-  margin: 20px auto;
-  border-radius: 10px;
-}
+/* ------- Buttons */
 
-.btn_add, .btn_done {
-  display: block;
-}
-
+/* Кнопка Save  в калькуляторе */
 .btn_save {
   /* width: 80px;
   padding: 5px 10px;

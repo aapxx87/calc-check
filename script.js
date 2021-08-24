@@ -1,4 +1,51 @@
+// ----------- SELECTORS -----------
+
+// ----- Основные контейнеры
+const caclContainer = document.querySelector('.container')
+const listContainer = document.querySelector('.container-list')
+const allListContainer = document.querySelector('.container-allList')
+
+
+
+// инпут названия события
+const inputTitle = document.querySelector('.input_title')
+
+// кнопка Save в калькуляторе для сохранени события
+const btnSave = document.querySelector('.btn_save')
+
+
+
+// вывод текущего вводимого числа
+const display = document.querySelector('.display')
+
+// список всех введенных значений
+const displayList = document.querySelector('.display-list')
+
+// выводится итоговая сумма 
+const displayFinal = document.querySelector('.display-final')
+
+
+// ----- Кнопки калькулятора
+
+// Цифровые кнопки
+const tabNumber = document.querySelectorAll('.tab-number')
+
+// Кнопки арифметических операций
+const tabCalc = document.querySelectorAll('.tab-calc')
+const tabPlus = document.querySelector('.tab-plus')
+
+const tabEqual = document.querySelector('.tab-equal')
+
+const containerBox = document.querySelector('.container-list')
+const result = document.querySelector('.result')
+
+
+
+
+
 // ------ ОСНОВНОЙ МАССИВ ХРАНЕНИЯ ДАННЫХ
+
+// в нем каждый новый рассчет пользователем сохраняется в виде объекта. Новый объект пушится в массив. 
 
 const dataArray = [
   {
@@ -19,47 +66,28 @@ const dataArray = [
 ]
 
 
-// console.log(dataArray[0].numberData[0][1]);
-
-
-// ----------- SELECTORS -----------
-
-// ----- основные контейнеры
-const caclContainer = document.querySelector('.container')
-const listContainer = document.querySelector('.container-list')
 
 
 
-const inputAdd = document.querySelector('.input_add')
-const inputTitle = document.querySelector('.input_title')
+// ----------- СТАРТОВЫЕ УСЛОВИЯ -----------
 
-const btnAdd = document.querySelector('.btn_add')
-const btnSave = document.querySelector('.btn_save')
+// переменная для сохраннеия текущего вводимого числа
+let tempNumber = ''
 
+// две переменные для сохраннеия чисел с которыми будет производиться операция
+let calcNumber1 = ''
+let calcNumber2 = ''
 
-// ----- дисплей калькулятора
-const display = document.querySelector('.display')
-const displayList = document.querySelector('.display-list')
-const displayFinal = document.querySelector('.display-final')
+// переменная для сохраннеия выбранного дейтсивя калькуляции пользователем
+let actionCalc = ''
 
+let calculate = Number(0)
 
-// ----- Кнопки калькулятора
+// число, которое образуется после определенной операции
+let operation = 0;
 
-// Цифровые кнопки
-const tabNumber = document.querySelectorAll('.tab-number')
-
-// Кнопки арифметических операций
-const tabCalc = document.querySelectorAll('.tab-calc')
-const tabPlus = document.querySelector('.tab-plus')
-
-const tabEqual = document.querySelector('.tab-equal')
-
-const containerBox = document.querySelector('.container-list')
-
-const result = document.querySelector('.result')
-
-
-
+// сохраняются все числа которые вводятся для суммирования результата
+let numbersData = []
 
 
 
@@ -68,25 +96,7 @@ const result = document.querySelector('.result')
 
 // ----------- ФУНКЦИОНАЛ КАЛЬКУЛЯТОРА -----------
 
-// число, которое вводит пользователь для дальнейших операций, строка как оно может склеиваться из нескольких знаков
-// после каждой операции эта переменная обнуляется, чтобы юзер мог ввести новое число
-let tempNumber = ''
-
-let calcNumber1 = ''
-let calcNumber2 = ''
-let actionCalc = ''
-
-
-let calculate = Number(0)
-
-// число, которое образуется после определенной операции
-let operation = 0;
-
-// сохраняются все числа которые вводятся дл ясуммирования результата
-let numbersData = []
-
-
-// Проверяем какя из кнопок цифровой клавиатуры нажата
+// Нажатие по кнопкам цифр - проверяем какя из кнопок цифровой клавиатуры нажата
 tabNumber.forEach(function (btn) {
   btn.addEventListener('click', function () {
 
@@ -99,9 +109,7 @@ tabNumber.forEach(function (btn) {
 
 
 
-
-
-
+// Нажатие по кнопке калькуляции
 tabCalc.forEach(function (btn) {
 
   btn.addEventListener('click', function () {
@@ -116,14 +124,10 @@ tabCalc.forEach(function (btn) {
      <p>${tempNumber}</p>
     `)
 
-
-
-
-
     display.textContent = actionCalc
 
     numbersData.push(Number(calcNumber1))
-    console.log(numbersData);
+
 
     tempNumber = ''
 
@@ -139,8 +143,6 @@ tabCalc.forEach(function (btn) {
 
     displayFinal.textContent = sum
 
-
-
   })
 
 })
@@ -148,114 +150,24 @@ tabCalc.forEach(function (btn) {
 
 
 
-
-
-
-
-
-
-// равно
-tabEqual.addEventListener('click', function () {
-
-
-  console.log(actionCalc);
-
-
-  calcNumber2 = Number(tempNumber)
-
-  tempNumber = ''
-
-
-  if (actionCalc === '+') {
-
-    calculate = calcNumber1 + calcNumber2
-    console.log(calculate);
-    numbersData.push(Number(calcNumber2))
-    display.textContent = calculate
-
-  } else if (actionCalc === '*') {
-
-    calculate = calcNumber1 * calcNumber2
-    numbersData.push(Number(calcNumber2))
-    console.log(calculate);
-    display.textContent = calculate
-
-
-  } else if (actionCalc === '/') {
-
-    calculate = calcNumber1 / calcNumber2
-    numbersData.push(Number(calcNumber2))
-    console.log(calculate);
-    display.textContent = calculate
-
-  } else if (actionCalc === '-') {
-
-    calculate = calcNumber1 - calcNumber2
-    numbersData.push(Number(calcNumber2))
-    console.log(calculate);
-    display.textContent = calculate
-
-  }
-
-  console.log(numbersData);
-
-  actionCalc = ''
-  calcNumber1 = ''
-  calcNumber2 = ''
-
-
-})
-
-
-
-
-
-
-/*
-// ----------- ВЫВОД В ИНТЕРФЕЙС -----------
-for (const item of dataArray) {
-
-
-  // сначала выгружаем основные элементы списка, добавляем класс, чтобы потом именно сюда вставлять детали array
-  containerBox.insertAdjacentHTML("beforeEnd",
-    `
-    <div class="result ${item.itemName}">
-     <p><b>${item.itemName}</b></p>
-    </div >
-  `
-  )
-
-  // потом из каждого элемента списка довставляем его array
-  for (const list of item.numberData) {
-    document.querySelector(`.${item.itemName}`).insertAdjacentHTML("beforeEnd",
-      `
-     <p>${list}</p>
-   `)
-  }
-
-}
-*/
-
-
-// Событие клика по кнопке done, массив из инпута добавляется в объект
+// Событие клика по кнопке save, массив из инпута добавляется в объект
 btnSave.addEventListener('click', function () {
 
+  //  numbersData - массив из всех введенных значений передаем аргументом в функцию addNewData и   передаем название ивента из inputTitle.value
   addNewData(numbersData, inputTitle.value)
 
+  //  после того как массив отправили в функцию numbersData обнуляем его
   numbersData = []
 
-  // inputAdd.value = ''
-  // inputTitle.value = ''
 
 
-  // console.log('--------- Updated array ---------');
-  console.log(dataArray);
+  // ------ дальше идет функционал выгрузки добавленного нового ивента в интерфейс 
 
 
+  // выбираем из массива всех данных только последний добавленный объект -> ниже его выгружаем в HTML
   const lastItem = dataArray[dataArray.length - 1]
 
-
-  // Вынрузка в HTML последнего добавленного в массив элемента
+  // Выгрузка в HTML последнего добавленного в массив элемента
   containerBox.insertAdjacentHTML("beforeEnd",
     `
       <div class="result ${lastItem.itemName}">
@@ -269,7 +181,7 @@ btnSave.addEventListener('click', function () {
   let sum = 0
 
   // потом из каждого элемента списка довставляем его array
-  for (const list of lastItem.numberData) {
+  for (const [i, list] of lastItem.numberData.entries()) {
 
     sum = sum + list[0]
 
@@ -281,7 +193,7 @@ btnSave.addEventListener('click', function () {
       <ul class="result-ul">
         <li>
           <p class="result-list">${list[0]}</p>
-          <p class="result-name">${list[1]}</p>
+          <p class="result-name">${list[1]}<span class='result-name-span'>${i}</span></p>
         </li>
         </ul>
      `)
@@ -300,7 +212,7 @@ btnSave.addEventListener('click', function () {
 
 
 
-// ------ ДОБАВЛЕНИЕ НОВОГО ПУНКТА РАСХОДОВ
+// ------ ДОБАВЛЕНИЕ НОВОГО ИВЕНТА В МАССИВ СО ВСЕМИ ИВЕНТАМИ
 
 // получаем их интерфейса название для расходной темы и массив из чисел из калькулятора, это пункты расходов (к ним по дефолту проставляется имя "Item name")
 const addNewData = function (arr, title) {
@@ -326,45 +238,77 @@ const addNewData = function (arr, title) {
 
 
 
-// ------ ВЫВОД СПИСКА РАСХОДОВ С НАИМЕНОВАНИЕМ ПО СТАТЬЕ ПРИ ВВОДЕ ЕЕ Title
 
-// выгружается в интерфейс типа как структура расходов по конкретной теме
-const findItem = function (title) {
+// ----------- ВЫВОД В ИНТЕРФЕЙС -----------
 
-  // итерируем массив с основными данными и условие, если в элемента массива (объект имя ранво переданному аргументу), то есть мы нашли нужны йобъект, то выводим его  свойство с расходами
-  for (const i of dataArray) {
+// выгрузка данных из массива с событиями в интерфейс на страницу со всеми ивентами
+for (const item of dataArray) {
 
-    if (i.itemName === title) {
-      console.log(i.numberData, dataArray.indexOf(i));
+  // сначала выгружаем основные элементы списка, добавляем класс, чтобы потом именно сюда  вставлять детали array
+
+  allListContainer.insertAdjacentHTML("beforeEnd",
+    `<div class="result ${item.itemName}">
+     <p><b>${item.itemName}</b></p>
+    </div >`
+  )
+
+}
+
+
+const eventList = document.querySelectorAll('.result')
+console.log(eventList)
+
+
+// выгружаем данные при клике по событию на странице всех событий на страницу с детализацией выбранного события
+eventList.forEach(function (item) {
+
+  item.addEventListener('click', function () {
+
+    allListContainer.style.display = 'none'
+    listContainer.style.display = 'block'
+
+
+    const name = item.classList
+
+
+    for (const list of dataArray) {
+
+      // console.log(list);
+
+      if (list.itemName === name[1]) {
+        console.log(list);
+        console.log(list.numberData);
+
+        listContainer.insertAdjacentHTML("beforeEnd",
+          `
+          <div class="result ${list.itemName}">
+            <p class="result-title"><b>${list.itemName}</b></p>
+            <p class="result-sum"></p>
+          </div >
+          `
+        )
+
+        for (const number of list.numberData) {
+
+          document.querySelector(`.container-list .${list.itemName}`).insertAdjacentHTML("beforeEnd",
+            `
+          <ul class="result-ul">
+            <li>
+            <p class="result-list">${number[0]}</p>
+            <p class="result-name">${number[1]}</p>
+            </li>
+          </ul>
+         `)
+
+        }
+
+      }
+
     }
 
-  }
-
-}
-
-// в интефрфейсе кликаем по тайтлу пункта расходов и проваливаемся в его детализацию, то есть тайтл является аргументом по которому далее мы находим нужный объект в массиве со всеми пунктами
-findItem('Weekend')
+  })
+})
 
 
 
 
-
-// ------ ПЕРЕИМЕНОВАНИЕ ДЕФОЛТНОГО НАЗВАНИЯ ДЛЯ ЗНАЧЕНИЯ РАСХОДОВ ('Item name')
-
-// выбор пункта происходит из списка расходов внутри конкретного расхода, то есть из функции findItem , мы  когда кликаем по пункту то забираем индекс конкретного числа dataArray.indexOf(i)
-const renameItem = function (indexItem, indexNumber, name) {
-
-  // dataArray[indexItem].numberData[indexNumber][1] = name
-
-}
-
-renameItem(4, 0, 'Bar')
-renameItem(4, 1, 'Cinema')
-renameItem(4, 2, 'Cafe')
-
-// console.log(dataArray);
-
-
-
-
-// ------ УДАЛЕНИЕ ITEM ВНУТРИ РАСХОДНОГО ПУНКТА

@@ -15,46 +15,62 @@
 
 <body ontouchstart="">
 
+
+  <!-- -------- КОНТЕЙНЕР СПИСКА ВСЕХ СОБЫТИЙ --------  -->
+  <div class="container-allList">
+
+  </div>
+
+
+
+
+
+  <!-- -------- КОНТЕЙНЕР СКАЛЬКУЛЯТОРОМ --------  -->
+
   <div class="container">
 
+    <!-- Наименование вкладок (Lets calc! Lets check!)  -->
     <div class="container-title">
       <p class='active-style'>Lets calc!</p>
       <p class="passive-style">Lets check!</p>
     </div>
 
 
+
+
+    <!-- Инпут ввода названия события -->
     <div class="inputBox">
+      <!-- EventListener -> btnSave -->
       <input type="text" class="input_title" id="inputTitle" placeholder="Add title...">
-      <!-- <label for="inputTitle">Title</label> -->
     </div>
 
-    <!-- <div class="inputBox">
-      <input type="text" class="input_add" id="inputAdd">
-      <label for="inputAdd">Data</label>
-    </div> -->
 
 
-    <!-- ----- ВЫВОД РЕЗУЛЬТАТОВ -->
+    <!-- Вывод Суммарного значения -->
     <div class="display-final">
-
+      <!-- JS вставляет просто значение: displayFinal.textContent = sum -->
+      <!-- EventListener -> tabCalc.forEach... -->
     </div>
 
+
+
+    <!-- Вывод всех введенных значений друг за другом -->
     <div class="display-list">
-      <!-- <p>100</p>
-      <p>200</p>
-      <p>300</p> -->
+      <!-- JS вставляет код: <p>${tempNumber}</p> -->
+      <!-- EventListener -> tabCalc.forEach... -->
     </div>
 
 
+
+    <!-- Вывод текущего вводимого числа -->
     <div class="display">
-      <!-- <p>100</p>
-      <p>200</p>
-      <p>300</p> -->
+      <!-- JS вставляет просто значение: display.textContent = tempNumber -->
+      <!-- EventListener -> tabNumber.forEach... -->
     </div>
 
 
 
-    <!-- ----- КНОПКИ КАЛЬКУЛЯТОРА -->
+    <!-- ----- КОНТЕЙНЕР С КНОПКАМИ КАЛЬКУЛЯТОРА -->
     <div class="calc-tabs">
       <div class="tab tab-number">7</div>
       <div class="tab tab-number">8</div>
@@ -78,82 +94,43 @@
       <div class="tab"></div>
 
       <div class="tab tab-number">0</div>
-
       <div class="tab tab-number">.</div>
       <div class="tab tab-del">del</div>
-      <div class="tab tab-save btn_save">- Save -
-        <!-- <button class="btn btn_save">Save</button> -->
-      </div>
-      <div class="tab"></div>
+      <div class="tab tab-save btn_save">- Save -</div>
     </div>
-
-    <!-- <button class="btn btn_add">Add</button> -->
-    <!-- <button class="btn btn_save">Save</button> -->
-
-
-
-
-    <!-- <div class="result">
-
-      <p>Spain trip</p>
-
-      <div class="result--details">
-        <p>Item name</p>
-        <p>300</p>
-      </div>
-      <div class="result--details">
-        <p>Item name</p>
-        <p>100</p>
-      </div>
-      <div class="result--details">
-        <p>Item name</p>
-        <p>50</p>
-      </div>
-
-    </div> -->
-
 
   </div>
 
 
+
+  <!-- -------- КОНТЕЙНЕР СОХРАНЕНИЯ СОБЫТИЯ --------  -->
+
   <div class="container-list">
 
+    <!-- Наименование вкладок (Lets calc! Lets check!)  -->
     <div class="container-title">
       <p class='passive-style'>Lets calc!</p>
       <p class="active-style">Lets check!</p>
     </div>
 
 
-    <!-- <div class="result">
-      <p class="result-title">Weekend</b></p>
-      <p class="result-sum">3700</p>
+    <!-- Дальше JS втавляет код после клика по кнопке Save в калькуляторе -->
+    <!-- EventListener -> btnSave... -->
 
+    <!-- <div class="result ${lastItem.itemName}">
+      <p class="result-title"><b>${lastItem.itemName}</b></p>
+      <p class="result-sum">${sum}</p>
       <ul class="result-ul">
         <li>
-          <p class="result-list">100</p>
-          <p class="result-name">Item name</p>
+          <p class="result-list">${list[0]}</p>
+          <p class="result-name">${list[1]}<span class='result-name-span'>${i}</span></p>
         </li>
-
-        <li>
-          <p class="result-list">200</p>
-          <p class="result-name">Item name</p>
-        </li>
-
-        <li>
-          <p class="result-list">50</p>
-          <p class="result-name">Item name</p>
-        </li>
-
-        <li>
-          <p class="result-list">300</p>
-          <p class="result-name">Item name</p>
-        </li>
-      </ul>
+        </ul>
     </div> -->
 
-
-
   </div>
+
+
 
 
   <script src="script.js"></script>
