@@ -9,8 +9,6 @@ const allListContainer = document.querySelector('.container-allList')
 // блок с детлизацией ивента при переходе с главной
 // const eventList = document.querySelectorAll('.result')
 
-
-
 // инпут названия события
 const inputTitle = document.querySelector('.input_title')
 
