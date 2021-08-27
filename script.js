@@ -6,6 +6,10 @@ const listContainer = document.querySelector('.container-list')
 const allListContainer = document.querySelector('.container-allList')
 
 
+// блок с детлизацией ивента при переходе с главной
+// const eventList = document.querySelectorAll('.result')
+
+
 
 // инпут названия события
 const inputTitle = document.querySelector('.input_title')
@@ -139,7 +143,7 @@ tabCalc.forEach(function (btn) {
 
     }
 
-    console.log(sum);
+    // console.log(sum);
 
     displayFinal.textContent = sum
 
@@ -149,8 +153,8 @@ tabCalc.forEach(function (btn) {
 
 
 
+//  -------------------- SAVE from Calculator ----------
 
-// Событие клика по кнопке save, массив из инпута добавляется в объект
 btnSave.addEventListener('click', function () {
 
   //  numbersData - массив из всех введенных значений передаем аргументом в функцию addNewData и   передаем название ивента из inputTitle.value
@@ -185,7 +189,7 @@ btnSave.addEventListener('click', function () {
 
     sum = sum + list[0]
 
-    console.log(sum)
+    // console.log(sum)
 
     document.querySelector(`.${lastItem.itemName}`).insertAdjacentHTML("beforeEnd",
       `
@@ -204,8 +208,41 @@ btnSave.addEventListener('click', function () {
     `<p class="result-sum">${sum}</p>`)
 
 
-  caclContainer.classList.add('shift-out-container')
-  listContainer.classList.add('shift-in-container-list')
+  // caclContainer.classList.add('shift-out-container')
+  // listContainer.classList.add('shift-in-container-list')
+
+
+  caclContainer.style.display = 'none'
+  listContainer.style.display = 'block'
+
+
+  // обнуление всех вводимых ранее данных в калькулятор
+
+  // переменная для сохраннеия текущего вводимого числа
+  tempNumber = ''
+
+  // две переменные для сохраннеия чисел с которыми будет производиться операция
+  calcNumber1 = ''
+  calcNumber2 = ''
+
+  displayFinal.textContent = ''
+  displayList.textContent = ''
+  display.textContent = ''
+  inputTitle.value = ''
+
+  console.log(dataArray);
+
+
+
+  // добаляем последний добавленный элемент массива с даннвми на главную страницу
+  allListContainer.insertAdjacentHTML("beforeEnd",
+    `<div class="result ${lastItem.itemName}">
+       <p><b>${lastItem.itemName}</b></p>
+      </div >`
+  )
+
+
+
 
 
 })
@@ -224,14 +261,18 @@ const addNewData = function (arr, title) {
     calcSum: function () { },
   }
 
-  for (const i of arr) {  // итерируем массив который передаем аргументом, чтобы заполнить массив number
-    number.push([i, 'Item name']) // заполняем массив number в нужном формате [[число, "Item name"]
+  for (const [idx, i] of arr.entries()) {  // итерируем массив который передаем аргументом, чтобы заполнить массив number
+    console.log(idx);
+    number.push([i, ('Item name' + ' ' + idx)]) // заполняем массив number в нужном формате [[число, "Item name"]
   }
 
   itemObj.itemName = title   // добавляем в объект item name из переданного аргумента
   itemObj.numberData = number
 
   dataArray.push(itemObj)
+
+
+
 
 }
 
@@ -241,7 +282,9 @@ const addNewData = function (arr, title) {
 
 // ----------- ВЫВОД В ИНТЕРФЕЙС -----------
 
-// выгрузка данных из массива с событиями в интерфейс на страницу со всеми ивентами
+// ----------- ПЕРВЫЙ ЭКРАН + список всех ивентов
+
+// выгрузка данных из массива с событиями в интерфейс на стартовую страницу со списком всех ивентов
 for (const item of dataArray) {
 
   // сначала выгружаем основные элементы списка, добавляем класс, чтобы потом именно сюда  вставлять детали array
@@ -256,8 +299,11 @@ for (const item of dataArray) {
 
 
 const eventList = document.querySelectorAll('.result')
-console.log(eventList)
 
+
+
+
+// ----------- ЭКРАН ДЕТАЛИЗАЦИИ ИВЕНТА + открывается расходная детализация ивента
 
 // выгружаем данные при клике по событию на странице всех событий на страницу с детализацией выбранного события
 eventList.forEach(function (item) {
@@ -276,8 +322,8 @@ eventList.forEach(function (item) {
       // console.log(list);
 
       if (list.itemName === name[1]) {
-        console.log(list);
-        console.log(list.numberData);
+        // console.log(list);
+        // console.log(list.numberData);
 
         listContainer.insertAdjacentHTML("beforeEnd",
           `
@@ -306,9 +352,109 @@ eventList.forEach(function (item) {
 
     }
 
+
+
+    //!  функционал переименования item name - работает, но очень сложно
+
+
+    // шаг 1 - создаем переменную из нод элементов из которых мы будем забирать данные для дальнейшего переименования
+    const itemNode = document.querySelectorAll('.container-list .result-name')
+
+
+    itemNode.forEach(function (item) {
+      // шаг 2 - проходимся циклом по нодам, чтобы понять по какой кликнул юзер
+      item.addEventListener('click', function () {
+
+        // сохраняем из HTML text content, который будем использовать как уникальный ключ для поиска нужного объекта и массива
+        const name = item.textContent
+        // console.log(name);
+
+        for (const list of dataArray) {
+          // шаг 3 - перебираем циклом все объекты в основном массиве
+          // console.log(list);
+
+          for (const [i, arr] of list.numberData.entries()) {
+            // шаг 4 - перебираем все свойства numberData (массив) из каждого объекта
+            // console.log(arr);
+
+            for (const name2 of arr) {
+              // шаг 5 - выбираем все элементы массива numberData - список массивов типа [150, "Tickets"]
+
+              if (typeof name2 === 'string') {
+                // console.log(name2);
+                // шаг 6 - забираем только второй элемент из массива, который строка, чтобы дальше сравнить с ней изначальный const name = item.textContent
+
+                if (name2 === name) {
+
+                  // шаг 7 - если name = item.textContent равен второму элементу из массива шагом выше
+
+                  list.numberData[i].splice(1)
+                  // то м ыего вырезаем
+
+                  const inputData = document.querySelector('.newItemName').value
+
+                  list.numberData[i].push(inputData)
+                  // и вставляем новое значение из инпута
+
+                }
+
+              }
+
+            }
+          }
+        }
+
+      })
+
+    })
+
   })
 })
 
 
 
 
+
+// ----------- ФУНКЦИОНАЛ КНОПКИ CALC! НА ГЛАВНОЙ -> ПЕРЕХОД НА КАЛЬКУЛЯТОР -----------
+
+const btnCalc = document.querySelector('.btnNewCalc')
+
+btnCalc.addEventListener('click', function () {
+
+  allListContainer.style.display = 'none'
+  caclContainer.style.display = 'block'
+
+})
+
+
+
+// ----------- ФУНКЦИОНАЛ КНОПКИ MAIN PAGE! НА СТРАНИЦЕ ДЕТАОИЗЦИИ ПОСЛЕ КНОПКИ SAVE -> ПЕРЕХОД НА ГЛАВНУЮ -----------
+
+const btnStartPage = document.querySelector('.btnStartpage')
+
+btnStartPage.addEventListener('click', function () {
+
+  listContainer.style.display = 'none'
+  allListContainer.style.display = 'block'
+
+
+  document.querySelector('.container-list .result').remove()
+
+})
+
+
+
+
+// ----------- ПЕРЕИМЕНОВАНИЕ Item list
+
+// const itemNode = document.querySelectorAll('.container-list .result-name')
+
+// console.log(itemNode);
+
+// itemNode.forEach(function (item) {
+
+//   item.addEventListener('click', function () {
+//     console.log(item);
+//   })
+
+// })
